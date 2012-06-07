@@ -168,7 +168,6 @@ Validator.validateRange = function(value, min, max) {
 }
 
 Validator.validateDate = function(date) {
-    // trace("functionEnabled");
     var exp = /(0[1-9]|[12][0-9]|3[01])[\/\-\.](0[1-9]|1[012])[\/\-\.](19|20)[0-9]{2}/;
     if (date.match(exp)) {
         return true;
@@ -178,7 +177,6 @@ Validator.validateDate = function(date) {
 }
 
 Validator.validateHour = function(hour) {
-    // trace("functionEnabled");
     var exp = /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])(:([0-5]?[0-9]))?$/;
     if (hour.match(exp)) {
         return true;
