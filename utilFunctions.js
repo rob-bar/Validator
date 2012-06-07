@@ -26,22 +26,18 @@ function stringDotify(cnt) {
 // =====================================
 function randomFromToBlackListed(from, to, blacklist) {
     var rnd_ = Math.floor(Math.random() * (to - from + 1) + from);
-    checkBlacklist(rnd_);
     function checkBlacklist(rnd) {
         rnd_ = rnd;
-        for (i = 0; i < blacklist.length; i++) {
-            if (rnd_ == blacklist[i]) checkBlacklist(Math.floor(Math.random() * (to - from + 1) + from));
+        for (var i = 0; i < blacklist.length; i++) {
+            if (rnd_ === blacklist[i]) {
+                checkBlacklist(Math.floor(Math.random() * (to - from + 1) + from));
+            }
         }
     }
+    checkBlacklist(rnd_);
     return rnd_;
 }
 
-// ============================
-// = checking canvasSupport =
-// ============================
-function canvasSupport() {
-    return Modernizr.canvas;
-}
 // =====================
 // = Class for logging stuff =
 // =====================
@@ -50,21 +46,25 @@ Debugger.isTracing = true;
 //strings
 Debugger.log = function(message) {
     try {
-        if (Debugger.isTracing) console.log(message);
+        if (Debugger.isTracing) {
+            console.log(message);
+        }
     } catch(exception) {
         console.log(exception);
         return;
     }
-}
+};
 //objects and arrrays
 Debugger.obj = function(obj) {
     try {
-        if (Debugger.isTracing) console.dir(obj);
+        if (Debugger.isTracing) {
+            console.dir(obj);
+        }
     } catch(exception) {
         console.log(exception);
         return;
     }
-}
+};
 
 // ========
 // = Class to count the frames in a setInterval function =
@@ -90,7 +90,7 @@ FrameRateCounter.prototype.countFrames = function() {
         this.frameCtr = 0;
     }
     delete dateTemp;
-}
+};
 
 // ====
 // = Function to calculate the distance between points =
