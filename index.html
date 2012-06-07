@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Validator Tests</title>
+	<script type="text/javascript" src="utilFunctions.js"></script>
+	<script type="text/javascript" src="validator.js"></script>
+	<script type="text/javascript">
+		Debugger.log("Validator.validateUsernameOrPassword('52436_-)(§è)'); => "+Validator.validateUsernameOrPassword('52436_-)(§è)'));
+		Debugger.log("Validator.validateUsernameOrPassword('TeSt_5645'); => "+Validator.validateUsernameOrPassword('test12_-'));		
+		
+		Debugger.log("Validator.validateHexvalue('#234534'); => "+Validator.validateHexvalue('#234534'));
+		Debugger.log("Validator.validateHexvalue('#1234R67'); => "+Validator.validateHexvalue('#1234R67'));
+
+		Debugger.log("Validator.validateEmail('52436_-)(§è)'); => "+Validator.validateEmail('52436_-)(§è)'));
+		Debugger.log("Validator.validateEmail('test@tet.com'); => "+Validator.validateEmail('test@tet.com'));
+		
+		Debugger.log("Validator.validateIpadress('gfjdlslqhhdsfjdks'); => "+Validator.validateIpadress('gfjdlslqhhdsfjdks'));
+		Debugger.log("Validator.validateIpadress('123.23.2.123'); => "+Validator.validateIpadress('123.23.2.123'));
+		
+		Debugger.log("Validator.validateHtmltag('validateHtmltag'); => "+Validator.validateHtmltag('validateHtmltag'));
+		Debugger.log("Validator.validateHtmltag('<input ></input>'); => "+Validator.validateHtmltag('<input ></input>'));
+		
+		Debugger.log("Validator.validateRequired('validateRequired'); => "+Validator.validateRequired('validateRequired'));
+		Debugger.log("Validator.validateRequired(''); => "+Validator.validateRequired(''));
+		
+		Debugger.log("Validator.validateLength('validateRequired',0,200); => "+Validator.validateLength('validateRequired',0,200));
+		Debugger.log("Validator.validateLength('test',5,20); => "+Validator.validateLength('test',5,20));
+		
+		Debugger.log("Validator.validateRange(2000,0,200); => "+Validator.validateRange(2000,0,200));
+		Debugger.log("Validator.validateRange(10,5,20); => "+Validator.validateRange(10,5,20));
+		
+		Debugger.log("Validator.validateDate('23/05/2012'); => "+Validator.validateDate("23/05/2012"));
+		Debugger.log("Validator.validateDate('40/30/19878') => "+Validator.validateDate("40/30/19878"));
+		Debugger.log("MATCHES dd/mm/yyyy && dd.mm.yyyy && dd-mm-yyyy");
+		
+		Debugger.log("Validator.validateHour('22:01:15a123'); => "+Validator.validateHour("22:01:15a123"));
+		Debugger.log("Validator.validateHour('22:01:15') => "+Validator.validateHour("22:01:15"));
+		Debugger.log("MATCHES 12:15 | 10:26:59 | 22:01:15");
+		
+		Debugger.log("Validator.validateIsequalto('test,test'); => "+Validator.validateIsequalto("test","test"));
+		Debugger.log("Validator.validateIsequalto('tests','testststs') => "+Validator.validateIsequalto('tests','testststs'));
+		Debugger.log("MATCHES equal strings whitespace optional");
+	
+		Debugger.log("Validator.validateUrl('http://www.google.be'); => "+Validator.validateUrl('http://www.google.be'));
+		Debugger.log("Validator.validateUrl('gjlfhksmmm.hd.fhqhlh.fdsfs'); => "+Validator.validateUrl('gjlfhksmmm.hd.fhqhlh.fdsfs'));
+		
+		// ====================================================================
+		// = GENERAL VALIDATE FUNCTION TO VALIDATE MULTIPLE FIELDS OR STRINGS =
+		// ====================================================================
+		Validator.validate({
+			url:{
+				validator: Validator.validateUrl('http://www.google.be'),
+				onSuccess: function(){Debugger.log("This string is valid");},
+				onFail: function(){Debugger.log("This string is Invalid");}
+			},
+			email:{
+				validator: Validator.validateEmail('http://www.google.be'),
+				onSuccess: function(){Debugger.log("This string is valid");},
+				onFail: function(){Debugger.log("This string is Invalid");}
+			}
+		});
+		Debugger.log("Validator.hasErrors => "+Validator.hasErrors);
+		// ========================================================
+		// = Validator.hasErrors TO CHECK IF ALL FIELDS ARE VALID =
+		// ========================================================
+		Validator.validate({
+			url:{
+				validator: Validator.validateUrl('http://www.google.be'),
+				onSuccess: function(){Debugger.log("This string is valid");},
+				onFail: function(){Debugger.log("This string is Invalid");}
+			},
+			email:{
+				validator: Validator.validateEmail('test@tester.com'),
+				onSuccess: function(){Debugger.log("This string is valid");},
+				onFail: function(){Debugger.log("This string is Invalid");}
+			},
+			custom:{
+				//string between 1 and 20
+				validator: Validator.validateRegExp('19', /^1?[1-9]$|^[1-2]0$/),
+				onSuccess: function(){Debugger.log("This string is valid");},
+				onFail: function(){Debugger.log("This string is Invalid");}
+			}
+		});
+		Debugger.log("Validator.hasErrors => "+Validator.hasErrors);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
