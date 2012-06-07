@@ -45,9 +45,6 @@
 		Debugger.log("Validator.validateUrl('http://www.google.be'); => "+Validator.validateUrl('http://www.google.be'));
 		Debugger.log("Validator.validateUrl('gjlfhksmmm.hd.fhqhlh.fdsfs'); => "+Validator.validateUrl('gjlfhksmmm.hd.fhqhlh.fdsfs'));
 		
-		// ====================================================================
-		// = GENERAL VALIDATE FUNCTION TO VALIDATE MULTIPLE FIELDS OR STRINGS =
-		// ====================================================================
 		Validator.validate({
 			url:{
 				validator: Validator.validateUrl('http://www.google.be'),
@@ -61,9 +58,7 @@
 			}
 		});
 		Debugger.log("Validator.hasErrors => "+Validator.hasErrors);
-		// ========================================================
-		// = Validator.hasErrors TO CHECK IF ALL FIELDS ARE VALID =
-		// ========================================================
+
 		Validator.validate({
 			url:{
 				validator: Validator.validateUrl('http://www.google.be'),
