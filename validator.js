@@ -1,42 +1,41 @@
-// 
+//
 //  validator.js
 //  validationTests
-//  
+//
 //  Created by Robbie Bardijn on 2012-06-07.
 //  Copyright 2012 Robbie Bardijn. All rights reserved.
-// 
-
+//
 function Validator() {
-	this.hasErrors = false;
+    this.hasErrors = false;
 }
 
-Validator.hassErrors = function(){
-	return this.hasErrors;
+Validator.hassErrors = function() {
+    return this.hasErrors;
 };
 
 Validator.validate = function(validators) {
-	this.hasErrors = false;
+    this.hasErrors = false;
     for (var validator_obj in validators) {
-		if(validators[validator_obj].validator === undefined || (validators[validator_obj].validator !== true && validators[validator_obj].validator !== false)){
-			throw "you must specify a validator key in a validator object, the value of this key Must be a function";
-		}
-		if(validators[validator_obj].onFail === undefined || (validators[validator_obj].onFail instanceof Function === false)){
-			throw "you must specify a onFail key in a validator object, the value of this key Must be a function";
-		}	
-		if(validators[validator_obj].validator === true){
-			validators[validator_obj].onSuccess();
-		}else{
-			this.hasErrors = true;
-			validators[validator_obj].onFail();
-		}
+        if (validators[validator_obj].validator === undefined || (validators[validator_obj].validator !== true && validators[validator_obj].validator !== false)) {
+            throw "you must specify a validator key in a validator object, the value of this key Must be a function";
+        }
+        if (validators[validator_obj].onFail === undefined || (validators[validator_obj].onFail instanceof Function === false)) {
+            throw "you must specify a onFail key in a validator object, the value of this key Must be a function";
+        }
+        if (validators[validator_obj].validator === true) {
+            validators[validator_obj].onSuccess();
+        } else {
+            this.hasErrors = true;
+            validators[validator_obj].onFail();
+        }
     }
 };
 
 String.prototype.ltrim = function() {
-	return this.replace(/^\s+/,"");
+    return this.replace(/^\s+/, "");
 };
 String.prototype.rtrim = function() {
-	return this.replace(/\s+$/,"");
+    return this.replace(/\s+$/, "");
 };
 
 Validator.validateUsernameOrPassword = function(username) {
@@ -67,8 +66,8 @@ Validator.validateEmail = function(email) {
 };
 
 Validator.validateUrl = function(url) {
-	var exp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-	if (url.match(exp)) {
+    var exp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    if (url.match(exp)) {
         return true;
     } else {
         return false;
@@ -102,12 +101,12 @@ Validator.validateRequired = function(str) {
 };
 
 Validator.validateLength = function(str, min, max) {
-    if (min === 0 && max === 0){
-		throw "Validator : When calling validateLength min or max should be different from 0.";
-	}
-    if ((min >= max || max <= min) && (max !== 0)){
-		throw "Validator : When calling validateLength min is the minimum and max should be the maximum.";
-	}
+    if (min === 0 && max === 0) {
+        throw "Validator : When calling validateLength min or max should be different from 0.";
+    }
+    if ((min >= max || max <= min) && (max !== 0)) {
+        throw "Validator : When calling validateLength min is the minimum and max should be the maximum.";
+    }
     if (min !== 0 && max !== 0) {
         if (str.length > min && str.length < max) {
             return true;
@@ -136,7 +135,7 @@ Validator.validateLength = function(str, min, max) {
 };
 
 Validator.isInteger = function(value) {
-    if (parseInt(value,10)) {
+    if (parseInt(value, 10)) {
         return true;
     } else {
         return false;
@@ -144,11 +143,11 @@ Validator.isInteger = function(value) {
 };
 
 Validator.validateRange = function(value, min, max) {
-    (min === undefined)? min = 0 : min = min;
-    (max === undefined)? max = 100 : max = max;
-    if ((min >= max || max <= min) && (max !== 0)){
-		throw "Validator : When calling validateRange min is the minimum and max should be the maximum.";
-	}
+    (min === undefined) ? min = 0: min = min;
+    (max === undefined) ? max = 100: max = max;
+    if ((min >= max || max <= min) && (max !== 0)) {
+        throw "Validator : When calling validateRange min is the minimum and max should be the maximum.";
+    }
     var ivalue = value;
     if (min !== 0 && max !== 0) {
         if (ivalue > min && ivalue < max) {
@@ -199,7 +198,7 @@ Validator.validateHour = function(hour) {
 };
 
 Validator.validateIsequalto = function(str, comparrer, ignoreWhitespaceInbackandfront) {
-    (ignoreWhitespaceInbackandfront === undefined)? ignoreWhitespaceInbackandfront = false : ignoreWhitespaceInbackandfront = ignoreWhitespaceInbackandfront;
+    (ignoreWhitespaceInbackandfront === undefined) ? ignoreWhitespaceInbackandfront = false: ignoreWhitespaceInbackandfront = ignoreWhitespaceInbackandfront;
     if (ignoreWhitespaceInbackandfront === true) {
         str = str.ltrim();
         comparrer = comparrer.ltrim();
@@ -214,7 +213,7 @@ Validator.validateIsequalto = function(str, comparrer, ignoreWhitespaceInbackand
 };
 
 Validator.validateIsNotequalto = function(str, comparrer, ignoreWhitespaceInbackandfront) {
-    (ignoreWhitespaceInbackandfront === undefined)? ignoreWhitespaceInbackandfront = false : ignoreWhitespaceInbackandfront = ignoreWhitespaceInbackandfront;
+    (ignoreWhitespaceInbackandfront === undefined) ? ignoreWhitespaceInbackandfront = false: ignoreWhitespaceInbackandfront = ignoreWhitespaceInbackandfront;
     if (ignoreWhitespaceInbackandfront === true) {
         str = str.ltrim();
         comparrer = comparrer.ltrim();
@@ -228,7 +227,7 @@ Validator.validateIsNotequalto = function(str, comparrer, ignoreWhitespaceInback
     }
 };
 
-Validator.validateRegExp = function(str,exp) {
+Validator.validateRegExp = function(str, exp) {
     if (str.match(exp)) {
         return true;
     } else {
