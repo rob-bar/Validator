@@ -3,9 +3,9 @@
 
 #### Description	
 
-	this javascript file is usseful for validating 	strings & other variables.
-	It is no plugin so it can be used on its own
-	Feel free to adapt, user or share this file  
+	This javascript file is usseful for validating 	strings & other variables.
+	It is no plugin so it can be used on its own.
+	Feel free to adapt, use or share this file. 
 	
 #### usage
 
