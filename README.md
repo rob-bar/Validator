@@ -32,8 +32,8 @@
 		Debugger.log("Validator.hasErrors => "+Validator.hasErrors);
 		
 This function accepts an object that can have multiple validation objects
-every validation objects (like above url for example) must have 2 explicit keys:
-*(validator(Must be a validator function that returns true or false))* and *(onFail(this is a callback function that will be invoked when the validatior function returns false))* optionaly you can add in a *onSuccess* witch will be invoked when the validator returns true.
+every validation object (like above url for example) must have 2 explicit keys:
+*(validator(Must be a validator function that returns true or false))* and *(onFail(this is a callback function that will be invoked when the validatior function returns false))*, optionaly you can add in a *onSuccess* witch will be invoked when the validator returns true.
 
 **U can use the hasErrors flag to check if all the fields where valid:**
 
@@ -51,4 +51,4 @@ If not you can continue.
 				onFail: function(){Debugger.log("This string is Invalid");}
 			}
 			
-#### enjoy
+#### check the index.html file for all examples, enjoy
