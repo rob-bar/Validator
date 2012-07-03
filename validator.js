@@ -57,7 +57,7 @@ Validator.validateHexvalue = function(hexValue) {
 };
 
 Validator.validateEmail = function(email) {
-    var exp = /^([a-z0-9_\.\-]+)@([\da-z\.\-]+)\.([a-z\.]{2,6})$/;
+    var exp = /^([a-zA-Z0-9_\.\-]+)@([\da-z\.\-]+)\.([a-z\.]{2,6})$/;
     if (email.match(exp)) {
         return true;
     } else {
