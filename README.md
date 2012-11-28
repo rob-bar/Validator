@@ -1,12 +1,12 @@
 # Validator
 ## Overview
 
-#### Description	
+#### Description
 
 	This javascript file is usseful for validating 	strings & other variables.
 	It is no plugin so it can be used on its own.
-	Feel free to adapt, use or share this file. 
-	
+	Feel free to adapt, use or share this file.
+
 #### usage
 
 **U can use the validator its functions separetly:**
@@ -30,10 +30,13 @@
 			}
 		});
 		Debugger.log("Validator.hasErrors => "+Validator.hasErrors);
-		
+
 This function accepts an object that can have multiple validation objects
 every validation object (like above url for example) must have 2 explicit keys:
 *(validator(Must be a validator function that returns true or false))* and *(onFail(this is a callback function that will be invoked when the validatior function returns false))*, optionaly you can add in a *onSuccess* witch will be invoked when the validator returns true.
+
+You can also add in a second parameter to the validate function, this parameter must be a key form your validation object (aka the first parameter), in this example url or email.
+**When you push in that second parameter the validate method wil only validate and execute this key.**
 
 **U can use the hasErrors flag to check if all the fields are valid:**
 
@@ -50,5 +53,5 @@ If not you can continue.
 				onSuccess: function(){Debugger.log("This string is valid");},
 				onFail: function(){Debugger.log("This string is Invalid");}
 			}
-			
+
 #### check the index.html file for all examples, enjoy
