@@ -26,7 +26,7 @@ Validator.validate = function(validators, singlerule) {
 								throw "you must specify a onFail key in a validator object, the value of this key Must be a function";
 						}
 						if (validators[validator_obj].validator === true) {
-							if(validators[validator_obj].onSuccess() !== undefined) {
+							if(validators[validator_obj].onSuccess !== undefined) {
 								validators[validator_obj].onSuccess();
 							}
 						} else {
@@ -43,7 +43,7 @@ Validator.validate = function(validators, singlerule) {
 								throw "you must specify a onFail key in a validator object, the value of this key Must be a function";
 						}
 						if (validators[singlerule].validator === true) {
-							if(validators[validator_obj].onSuccess() !== undefined) {
+							if(validators[validator_obj].onSuccess !== undefined) {
 								validators[validator_obj].onSuccess();
 							}
 						} else {
